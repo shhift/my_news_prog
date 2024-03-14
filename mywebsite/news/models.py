@@ -13,7 +13,7 @@ class Article(models.Model):
     publish = models.DateTimeField(default=timezone.now())
     headline = models.CharField(max_length=100)
     content = models.TextField()
-    reporter = models.ForeignKey(User, on_delete=models.CASCADE())
+    reporter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="news_articles")
 
     class Meta:
         ordering = ["-publish"]
