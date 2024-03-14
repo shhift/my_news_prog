@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Reporter(models.Model):
@@ -12,7 +13,7 @@ class Article(models.Model):
     publish = models.DateTimeField(default=timezone.now())
     headline = models.CharField(max_length=100)
     content = models.TextField()
-    reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE())
+    reporter = models.ForeignKey(User, on_delete=models.CASCADE())
 
     class Meta:
         ordering = ["-publish"]
