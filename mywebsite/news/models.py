@@ -16,6 +16,9 @@ class Article(models.Model):
 
     class Meta:
         ordering = ["-publish"]
+        indexes = [
+            models.Index(fields=["-publish"])
+        ]
 
     def __str__(self):
         return self.headline
