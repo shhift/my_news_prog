@@ -5,7 +5,7 @@ from .models import Article
 
 def article_detail(request, id):
     article = get_object_or_404(Article, id=id)
-    return render(request, "news/article/list.html", {"articles": article})
+    return render(request, "news/article/list.html", {"article": article})
 
 
 def article_list(request):
