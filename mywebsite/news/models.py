@@ -3,8 +3,6 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
-
-
 class Article(models.Model):
     publish = models.DateField(default=timezone.now)
     headline = models.CharField(max_length=200)
