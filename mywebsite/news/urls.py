@@ -9,5 +9,5 @@ urlpatterns = [
         "<int:year>/<int:month>/<int:day>/<slug:post>/",
         views.article_detail,
         name="article_detail",
-    )
+    ),
 ]
