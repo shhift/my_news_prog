@@ -7,7 +7,7 @@ class PublishedManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status=Article.Status.PUBLISHED)
 
-    
+
 class Article(models.Model):
     publish = models.DateField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
@@ -27,6 +27,9 @@ class Article(models.Model):
     status = models.CharField(
         max_length=2, choices=Status.choices, default=Status.DRAFT
     )
+
+    objects = models.Manager()
+    published = PublishedManager()
     class Meta:
         ordering = ["-publish"]
         indexes = [
