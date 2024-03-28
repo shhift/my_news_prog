@@ -7,9 +7,9 @@ def article_detail(request, year, month, day, article_slg):
         Article,
         status=Article.Status.PUBLISHED,
         slug=article_slg,
-        publish_year=year,
-        publish_month=month,
-        publish_day=day,
+        publish__year=year,
+        publish__month=month,
+        publish__day=day,
     )
     return render(request, "news/article/detail.html", {"article": article})
 
