@@ -9,11 +9,19 @@ class Article(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     headline = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200)
     content = models.TextField()
     reporter = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="news_articles"
     )
 
+    class Status(models.TextChoices):
+        DRAFT = "DF", "Draft"
+        PUBLISHED = "PB", "Published"
+
+    status = models.CharField(
+        max_length=2, choices=Status.choices, default=Status.DRAFT
+    )
     class Meta:
         ordering = ["-publish"]
         indexes = [
