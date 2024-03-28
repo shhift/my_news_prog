@@ -9,5 +9,9 @@ class ArticleAdmin(admin.ModelAdmin):
     search_fields = ["headline", "content"]
     raw_id_fields = ["reporter"]
     date_hierarchy = "publish"
-    ordering = ["publish"]
+    ordering = [
+        "publish",
+        "status",
+    ]
+    prepopulated_fields = {"slug":("headline",)}
 
