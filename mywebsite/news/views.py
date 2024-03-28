@@ -8,5 +8,5 @@ def article_detail(request, id):
 
 
 def article_list(request):
-    articles = Article.objects.published()
+    articles = Article.published.all()
     return render(request, "news/article/list.html", {"articles": articles})
