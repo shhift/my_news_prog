@@ -1,16 +1,39 @@
-{% extends "news/base.html" %}
-{% block title %}My News{%endblock%}
-{% block content %}
-<h1>My News</h1>
-  {% for article in articles %}
-  <h2>
-  <a href="{% url 'news:article_detail' article.id %}">
-    {{ article.headline }}
-  </a>
-  </h2>
-  <p>
-    Published {{ article.publish }} by {{ article.reporter}}
-  </p>
-  {{ article.content|truncatewords:30|linebreaks }}
-  {% endfor%}
-{% endblock%}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="wight=device-wight, initial-scale=1">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header>News site</header>
+    <section>
+        <article>
+            {% block content %}
+            {% endblock %}
+        </article>
+        <nav>
+            <ul>
+                <h2>Navigation bar</h2>
+                <li>
+                    <p>This is my news site.</p>
+                </li>
+
+                <a href="{% url 'news:article_list' %}">
+                    Home
+                </a>
+            </ul>
+        </nav>
+    </section>
+    <footer>
+        Footer
+    </footer>
+
+</body>
+</html>
