@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Article
-from django.core.paginator import Paginator, EmptyPage
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def article_detail(request, year, month, day, article_slg):
@@ -24,5 +24,7 @@ def article_list(request):
         articles = paginator.page(page_number)
     except EmptyPage:
         articles = paginator.page(paginator.num_pages)
+    except PageNotAnInteger:
+        articles = paginator.page(1)
 
     return render(request, "news/article/list.html", {"articles": articles})
