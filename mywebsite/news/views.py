@@ -21,5 +21,5 @@ def article_list(request):
     paginator = Paginator(articles, 2)
     page_number = request.GET.get("page", 1)
     articles = paginator.page(page_number)
-    
+
     return render(request, "news/article/list.html", {"articles": articles})
